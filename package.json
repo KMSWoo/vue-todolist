@@ -37,6 +37,16 @@
     "env": {
       "node": true
     },
+    "rules": {
+      "comma-dangle": [
+        "error",
+        "always-multiline"
+      ],
+      "semi": [
+        "error",
+        "always"
+      ]
+    },
     "extends": [
       "plugin:vue/essential",
       "@vue/standard"
@@ -44,12 +54,12 @@
     "parserOptions": {
       "parser": "@babel/eslint-parser",
       "requireConfigFile": false
-    },
-    "rules": {}
+    }
   },
   "browserslist": [
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "vetur.config.rootPath": "t:/PROJECTS/node-full-stack/todo-list/frontend"
 }
