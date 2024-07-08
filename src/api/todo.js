@@ -1,16 +1,15 @@
-
-function getAllTodos () {
+function getAllTodos() {
   return JSON.parse(localStorage.getItem('todos') || '[]');
 }
 
-function getCompletedTodos () {
-  return getAllTodos().filter(todo => todo.completed);
+function getCompletedTodos() {
+  return getAllTodos().filter((todo) => todo.completed);
 }
 
-function getIncompleteTodos () {
-  return getAllTodos().filter(todo => !todo.completed);
+function getIncompleteTodos() {
+  return getAllTodos().filter((todo) => !todo.completed);
 }
-function addTodo (title, deadline = '') {
+function addTodo(title, deadline = '') {
   const todos = getAllTodos();
   const newTodo = {
     id: Date.now().toString(),
@@ -25,9 +24,9 @@ function addTodo (title, deadline = '') {
   return newTodo;
 }
 
-function updateTodo (id, updates) {
+function updateTodo(id, updates) {
   const todos = getAllTodos();
-  const index = todos.findIndex(todo => todo.id === id);
+  const index = todos.findIndex((todo) => todo.id === id);
   if (index !== -1) {
     todos[index] = { ...todos[index], ...updates };
     localStorage.setItem('todos', JSON.stringify(todos));
@@ -36,15 +35,15 @@ function updateTodo (id, updates) {
   return null;
 }
 
-function deleteTodo (id) {
+function deleteTodo(id) {
   const todos = getAllTodos();
-  const filteredTodos = todos.filter(todo => todo.id !== id);
+  const filteredTodos = todos.filter((todo) => todo.id !== id);
   localStorage.setItem('todos', JSON.stringify(filteredTodos));
 }
 
-function toggleTodoComplete (id) {
+function toggleTodoComplete(id) {
   const todos = getAllTodos();
-  const todo = todos.find(todo => todo.id === id);
+  const todo = todos.find((todo) => todo.id === id);
   if (todo) {
     todo.completed = !todo.completed;
     todo.completedAt = todo.completed ? new Date().toLocaleString() : null;
@@ -54,9 +53,17 @@ function toggleTodoComplete (id) {
   return null;
 }
 
-function getTodoById (id) {
+function getTodoById(id) {
   const todos = getAllTodos();
-  return todos.find(todo => todo.id === id) || null;
+  return todos.find((todo) => todo.id === id) || null;
 }
 
-export { getCompletedTodos, getIncompleteTodos, addTodo, updateTodo, deleteTodo, toggleTodoComplete, getTodoById };
+export {
+  getCompletedTodos,
+  getIncompleteTodos,
+  addTodo,
+  updateTodo,
+  deleteTodo,
+  toggleTodoComplete,
+  getTodoById,
+};
