@@ -22,7 +22,7 @@
             type="text"
             v-model="input"
             size="big"
-            @keyup.enter.native="addNewTodo(input)"
+            @keyup.enter="addNewTodo(input)"
             placeholder="添加待办事项..."
           />
         </div>
@@ -36,7 +36,7 @@
       <el-tabs v-model="activeTab" type="border-card" @tab-click="changeTab">
         <!-- 未完成列表 -->
         <el-tab-pane
-          class="overflow-auto h-[60svh] rounded-xl"
+          class="overflow-auto h-[55svh] rounded-xl"
           v-show="activeTab === 'undone'"
           name="undone"
           :label="labels[0]"
