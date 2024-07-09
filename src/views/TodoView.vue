@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="todo">
     <TodoListVue></TodoListVue>
   </div>
 </template>

@@ -1,28 +1,30 @@
 <template>
-  <div id="main" class="my-10 w-screen">
+  <div id="main" class="my-[2.5svh] lg:mt-[5svh] w-screen">
     <!-- 标题部分 -->
     <div id="title" class="flex flex-row justify-center items-end">
-      <p class="text-2xl font-mono self-start">Just</p>
+      <p class="lg:text-2xl text-lg font-mono self-start">Just</p>
       <h1
-        class="text-8xl font-sans antialiased font-bold text-center text-gray-400/80 uppercase ml-2"
+        class="lg:text-8xl text-5xl font-sans antialiased font-bold text-center text-gray-400/80 uppercase"
       >
         {{ msg }}
       </h1>
-      <p class="capitalize text-2xl font-mono">it</p>
+      <p class="capitalize lg:text-2xl text-lg font-mono">it</p>
     </div>
     <!-- 输入框部分 -->
-    <div id="input" class="w-screen flex flex-row justify-center">
-      <div class="w-1/2 flex flex-row">
-        <!-- 添加的包装 div -->
-        <div class="my-10 grow">
-          <!-- 修改这里 -->
-          <el-input
+    <div
+      id="input"
+      class="w-screen flex flex-row justify-center my-[1svh] md:my-[2.5svh]"
+    >
+      <div class="w-4/5 lg:w-1/2 flex flex-row md:static fixed bottom-10">
+        <div class="grow">
+          <input
+            class="w-full h-full border-solid border-2 px-2 rounded-md"
+            type="text"
             v-model="input"
             size="big"
             @keyup.enter.native="addNewTodo(input)"
             placeholder="添加待办事项..."
-            >我在这</el-input
-          >
+          />
         </div>
         <div class="self-center">
           <el-button type="primary" @click="addNewTodo(input)">提交</el-button>
@@ -30,15 +32,16 @@
       </div>
     </div>
     <!-- todo列表 -->
-    <div class="w-1/2 mx-auto rounded-xl">
+    <div class="w-4/5 lg:w-1/2 mx-auto">
       <el-tabs v-model="activeTab" type="border-card" @tab-click="changeTab">
         <!-- 未完成列表 -->
         <el-tab-pane
+          class="overflow-auto h-[60svh] rounded-xl"
           v-show="activeTab === 'undone'"
           name="undone"
           :label="labels[0]"
         >
-          <p v-if="todos.length === 0">恭喜你，所有的Todo都已完成</p>
+          <p v-if="todos.length === 0">目前还没有任何 Todo ！</p>
           <div
             v-for="todo in todos"
             :key="todo.id"
@@ -51,7 +54,7 @@
                 icon="el-icon-check"
                 plain
                 circle
-                @click="toggleComplete(todo.id)"
+                @click="toggleComplete(todo.id, activeTab)"
               ></el-button>
             </div>
             <p class="mx-3">{{ todo.title }}</p>
@@ -70,8 +73,9 @@
           v-show="activeTab === 'done'"
           name="done"
           :label="labels[1]"
+          class="overflow-auto h-[60svh]"
         >
-          <p v-if="dones.length === 0">目前没有完成的Todo!</p>
+          <p v-if="dones.length === 0">目前没有完成的 Todo ！</p>
           <div
             v-for="todo in dones"
             :key="todo.id"
@@ -81,10 +85,10 @@
               <el-button
                 size="small"
                 type="success"
-                icon="el-icon-check"
+                icon="el-icon-top-left"
                 plain
                 circle
-                @click="toggleComplete(todo.id)"
+                @click="toggleComplete(todo.id, activeTab)"
               ></el-button>
             </div>
             <p class="mx-3 line-through">{{ todo.title }}</p>
@@ -130,6 +134,7 @@ export default {
     this.dones = getCompletedTodos();
   },
   methods: {
+    revokeTodo(id) {},
     changeTab(tab, event) {
       // console.log(tab.index);
       console.log(tab.name);
@@ -155,12 +160,18 @@ export default {
       this.todos = this.todos.filter((todo) => todo.id !== id);
       this.dones = this.dones.filter((done) => done.id !== id);
     },
-    toggleComplete(id) {
+    toggleComplete(id, activeTab) {
       const updatedTodo = toggleTodoComplete(id);
       if (updatedTodo) {
-        const index = this.todos.findIndex((todo) => todo.id === id);
-        this.todos.splice(index, 1);
-        this.dones.push(updatedTodo);
+        if (activeTab === 'undone') {
+          const index = this.todos.findIndex((todo) => todo.id === id);
+          this.todos.splice(index, 1);
+          this.dones.push(updatedTodo);
+        } else {
+          const index = this.dones.findIndex((done) => done.id === id);
+          this.dones.splice(index, 1);
+          this.todos.push(updatedTodo);
+        }
       }
     },
   },
