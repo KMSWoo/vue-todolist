@@ -51,7 +51,12 @@
           name="undone"
           :label="labels[0]"
         >
-          <!-- <img id="lizhi" alt="" /> -->
+          <img
+            v-show="todos.length === 0"
+            id="lizhi"
+            alt=""
+            class="w-full rounded-xl max-h-[65vh]"
+          />
           <div
             v-for="todo in todos"
             :key="todo.id"
@@ -142,7 +147,7 @@ export default {
     };
   },
   created() {
-    // this.getFenxiangImg();
+    this.getFenxiangImg();
     this.todos = getIncompleteTodos();
     this.dones = getCompletedTodos();
   },

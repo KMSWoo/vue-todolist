@@ -657,6 +657,14 @@ video {
   max-height: 6vh;
 }
 
+.max-h-\[70vh\] {
+  max-height: 70vh;
+}
+
+.max-h-\[65vh\] {
+  max-height: 65vh;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -699,6 +707,10 @@ video {
 
 .w-1\/2 {
   width: 50%;
+}
+
+.max-w-full {
+  max-width: 100%;
 }
 
 .flex-grow {
