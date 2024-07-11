@@ -665,6 +665,10 @@ video {
   max-height: 65vh;
 }
 
+.max-h-\[10vh\] {
+  max-height: 10vh;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -859,6 +863,10 @@ video {
 
   .md\:h-\[10vh\] {
     height: 10vh;
+  }
+
+  .md\:h-\[5vh\] {
+    height: 5vh;
   }
 
   .md\:w-1\/2 {

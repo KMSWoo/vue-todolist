@@ -18,9 +18,11 @@
       id="input"
       class="md:h-[10vh] md:flex md:flex-row md:justify-center md:items-center md:static md:w-full fixed bottom-[2vh] w-4/5"
     >
-      <div class="flex flex-row w-full justify-center items-center">
+      <div
+        class="max-h-[10vh] flex flex-row w-full justify-center items-center"
+      >
         <input
-          class="w-full border-solid border-2 px-2 rounded-md h-[5vh]"
+          class="w-full border-solid border-2 px-2 rounded-md h-[6vh] md:h-[5vh]"
           type="text"
           v-model="input"
           size="big"
@@ -29,7 +31,7 @@
         />
 
         <el-button
-          type="primary h-[5vh]"
+          type="primary h-[6vh] md:h-[5vh]"
           size="medium"
           @click="addNewTodo(input)"
           >提交</el-button
@@ -37,7 +39,7 @@
       </div>
     </div>
     <!-- todo列表 -->
-    <div class="grow flex flex-col">
+    <div class="grow flex flex-col rounded-xl">
       <el-tabs
         v-model="activeTab"
         type="border-card"
@@ -155,7 +157,13 @@ export default {
     async getFenxiangImg() {
       try {
         // 发送GET请求到API
-        const response = await this.$axios.get('https://api.031920.xyz/iciba');
+        // herokuapp 比 https://api.031920.xyz/iciba快多了
+        const response = await this.$axios.get(
+          // eslint-disable-next-line comma-dangle
+          // 'https://cors-anywhere.herokuapp.com/https://open.iciba.com/dsapi/'
+          // eslint-disable-next-line comma-dangle
+          'https://api.031920.xyz/iciba'
+        );
 
         const data = response.data;
 
@@ -214,7 +222,13 @@ export default {
 </script>
 <style scoped>
 /* >>> 换成 /deep/也可以 */
-/* .el-tabs >>> .el-tabs__content {
-  flex-grow: 1;
-} */
+.el-tabs >>> .el-tabs__item {
+  border-radius: 0.75rem 0 0 0;
+}
+.el-tabs >>> .el-tabs__header {
+  border-radius: 0.75rem 0.75rem 0 0;
+}
+.el-tabs--top {
+  border-radius: 0.75rem;
+}
 </style>
