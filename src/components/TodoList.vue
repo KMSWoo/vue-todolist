@@ -41,7 +41,8 @@
           name="undone"
           :label="labels[0]"
         >
-          <p v-if="todos.length === 0">目前还没有任何 Todo ！</p>
+          <!-- <p v-if="todos.length === 0">目前还没有任何 Todo ！</p> -->
+          <img id="lizhi" alt="" />
           <div
             v-for="todo in todos"
             :key="todo.id"
@@ -127,14 +128,33 @@ export default {
       todos: [],
       dones: [],
       labels: ['进行中', '已完成'],
+      imgUrl: '',
     };
   },
   created() {
+    this.getFenxiangImg();
     this.todos = getIncompleteTodos();
     this.dones = getCompletedTodos();
   },
   methods: {
-    revokeTodo(id) {},
+    async getFenxiangImg() {
+      try {
+        // 发送GET请求到API
+        const response = await this.$axios.get('https://api.031920.xyz/iciba');
+
+        const data = response.data;
+
+        // 提取fenxiang_img字段
+        const fenxiangImg = data.fenxiang_img;
+
+        // return fenxiangImg;
+        document.getElementById('lizhi').src = fenxiangImg;
+        console.log('Fenxiang Image URL:', fenxiangImg);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        throw error;
+      }
+    },
     changeTab(tab, event) {
       // console.log(tab.index);
       console.log(tab.name);
