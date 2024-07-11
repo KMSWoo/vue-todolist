@@ -1,52 +1,61 @@
 <template>
-  <div id="main" class="my-[2.5svh] lg:mt-[5svh] w-screen">
+  <div
+    id="main"
+    class="min-h-screen flex flex-col w-4/5 lg:w-1/2 mx-auto py-[2vh]"
+  >
     <!-- 标题部分 -->
-    <div id="title" class="flex flex-row justify-center items-end">
-      <p class="lg:text-2xl text-lg font-mono self-start">Just</p>
+    <div id="title" class="flex flex-row justify-center h-[10vh] items-center">
+      <p class="md:text-2xl text-lg font-mono self-start">Just</p>
       <h1
         class="lg:text-8xl text-5xl font-sans antialiased font-bold text-center text-gray-400/80 uppercase"
       >
         {{ msg }}
       </h1>
-      <p class="capitalize lg:text-2xl text-lg font-mono">it</p>
+      <p class="capitalize lg:text-2xl text-lg font-mono self-end">it</p>
     </div>
     <!-- 输入框部分 -->
     <div
       id="input"
-      class="w-screen flex flex-row justify-center my-[1svh] md:my-[2.5svh]"
+      class="md:h-[10vh] md:flex md:flex-row md:justify-center md:items-center md:static md:w-full fixed bottom-[2vh] w-4/5"
     >
-      <div class="w-4/5 lg:w-1/2 flex flex-row md:static fixed bottom-10">
-        <div class="grow">
-          <input
-            class="w-full h-full border-solid border-2 px-2 rounded-md"
-            type="text"
-            v-model="input"
-            size="big"
-            @keyup.enter="addNewTodo(input)"
-            placeholder="添加待办事项..."
-          />
-        </div>
-        <div class="self-center">
-          <el-button type="primary" @click="addNewTodo(input)">提交</el-button>
-        </div>
+      <div class="flex flex-row w-full justify-center items-center">
+        <input
+          class="w-full border-solid border-2 px-2 rounded-md h-[5vh]"
+          type="text"
+          v-model="input"
+          size="big"
+          @keyup.enter="addNewTodo(input)"
+          placeholder="添加待办事项..."
+        />
+
+        <el-button
+          type="primary h-[5vh]"
+          size="medium"
+          @click="addNewTodo(input)"
+          >提交</el-button
+        >
       </div>
     </div>
     <!-- todo列表 -->
-    <div class="w-4/5 lg:w-1/2 mx-auto">
-      <el-tabs v-model="activeTab" type="border-card" @tab-click="changeTab">
+    <div class="grow flex flex-col">
+      <el-tabs
+        v-model="activeTab"
+        type="border-card"
+        @tab-click="changeTab"
+        class="grow"
+      >
         <!-- 未完成列表 -->
         <el-tab-pane
-          class="overflow-auto h-[55svh] rounded-xl"
+          class="overflow-auto rounded-xl"
           v-show="activeTab === 'undone'"
           name="undone"
           :label="labels[0]"
         >
-          <!-- <p v-if="todos.length === 0">目前还没有任何 Todo ！</p> -->
-          <img id="lizhi" alt="" />
+          <!-- <img id="lizhi" alt="" /> -->
           <div
             v-for="todo in todos"
             :key="todo.id"
-            class="mx-auto my-2 flex flex-row border-2 p-2 px-3 rounded-xl"
+            class="mx-auto flex flex-row border-2 p-2 px-3 rounded-xl"
           >
             <div>
               <el-button
@@ -67,20 +76,21 @@
                 circle
                 @click="removeTodo(todo.id)"
               ></el-button>
-            </div></div
-        ></el-tab-pane>
+            </div>
+          </div>
+        </el-tab-pane>
         <!-- 已完成列表 -->
         <el-tab-pane
           v-show="activeTab === 'done'"
           name="done"
           :label="labels[1]"
-          class="overflow-auto h-[60svh]"
+          class="overflow-auto grow"
         >
           <p v-if="dones.length === 0">目前没有完成的 Todo ！</p>
           <div
             v-for="todo in dones"
             :key="todo.id"
-            class="mx-auto my-2 flex flex-row border-2 p-2 px-3 rounded-xl"
+            class="mx-auto flex flex-row border-2 p-2 px-3 rounded-xl"
           >
             <div>
               <el-button
@@ -132,7 +142,7 @@ export default {
     };
   },
   created() {
-    this.getFenxiangImg();
+    // this.getFenxiangImg();
     this.todos = getIncompleteTodos();
     this.dones = getCompletedTodos();
   },
@@ -197,3 +207,9 @@ export default {
   },
 };
 </script>
+<style scoped>
+/* >>> 换成 /deep/也可以 */
+/* .el-tabs >>> .el-tabs__content {
+  flex-grow: 1;
+} */
+</style>

@@ -562,6 +562,14 @@ video {
   bottom: 2.5rem;
 }
 
+.bottom-\[2vh\] {
+  bottom: 2vh;
+}
+
+.bottom-0 {
+  bottom: 0px;
+}
+
 .mx-3 {
   margin-left: 0.75rem;
   margin-right: 0.75rem;
@@ -587,6 +595,16 @@ video {
   margin-bottom: 2.5svh;
 }
 
+.my-\[2\.5vh\] {
+  margin-top: 2.5vh;
+  margin-bottom: 2.5vh;
+}
+
+.my-\[2vh\] {
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}
+
 .ml-auto {
   margin-left: auto;
 }
@@ -607,6 +625,62 @@ video {
   height: 100%;
 }
 
+.h-\[10vh\] {
+  height: 10vh;
+}
+
+.h-screen {
+  height: 100vh;
+}
+
+.h-\[5vh\] {
+  height: 5vh;
+}
+
+.h-\[8vh\] {
+  height: 8vh;
+}
+
+.h-\[6vh\] {
+  height: 6vh;
+}
+
+.h-1\/2 {
+  height: 50%;
+}
+
+.h-2\/3 {
+  height: 66.666667%;
+}
+
+.max-h-\[6vh\] {
+  max-height: 6vh;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.min-h-\[10vh\] {
+  min-height: 10vh;
+}
+
+.min-h-\[15vh\] {
+  min-height: 15vh;
+}
+
+.min-h-\[20vh\] {
+  min-height: 20vh;
+}
+
+.min-h-\[80vh\] {
+  min-height: 80vh;
+}
+
+.min-h-\[75vh\] {
+  min-height: 75vh;
+}
+
 .w-4\/5 {
   width: 80%;
 }
@@ -619,6 +693,18 @@ video {
   width: 100vw;
 }
 
+.w-\[1\/2vw\] {
+  width: 1/2vw;
+}
+
+.w-1\/2 {
+  width: 50%;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
 .grow {
   flex-grow: 1;
 }
@@ -627,8 +713,16 @@ video {
   flex-direction: row;
 }
 
+.flex-col {
+  flex-direction: column;
+}
+
 .items-end {
   align-items: flex-end;
+}
+
+.items-center {
+  align-items: center;
 }
 
 .justify-center {
@@ -637,6 +731,10 @@ video {
 
 .self-start {
   align-self: flex-start;
+}
+
+.self-end {
+  align-self: flex-end;
 }
 
 .self-center {
@@ -675,6 +773,11 @@ video {
 .px-3 {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
+}
+
+.py-\[2vh\] {
+  padding-top: 2vh;
+  padding-bottom: 2vh;
 }
 
 .text-center {
@@ -736,6 +839,39 @@ video {
   .md\:my-\[2\.5svh\] {
     margin-top: 2.5svh;
     margin-bottom: 2.5svh;
+  }
+
+  .md\:flex {
+    display: flex;
+  }
+
+  .md\:h-\[10vh\] {
+    height: 10vh;
+  }
+
+  .md\:w-1\/2 {
+    width: 50%;
+  }
+
+  .md\:w-full {
+    width: 100%;
+  }
+
+  .md\:flex-row {
+    flex-direction: row;
+  }
+
+  .md\:items-center {
+    align-items: center;
+  }
+
+  .md\:justify-center {
+    justify-content: center;
+  }
+
+  .md\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 }
 
