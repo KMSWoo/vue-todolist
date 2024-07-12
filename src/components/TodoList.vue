@@ -55,8 +55,8 @@
         >
           <img
             v-show="todos.length === 0"
-            id="lizhi"
-            alt=""
+            :src="imgUrl"
+            alt="Daily Quote"
             class="w-full rounded-xl max-h-[65vh]"
           />
           <div
@@ -145,8 +145,23 @@ export default {
       todos: [],
       dones: [],
       labels: ['进行中', '已完成'],
-      imgUrl: '',
     };
+  },
+  computed: {
+    imgUrl() {
+      // 获取当前日期
+      const today = new Date();
+
+      // 格式化日期为 YYYY-MM-DD
+      const year = today.getFullYear();
+      const month = String(today.getMonth() + 1).padStart(2, '0'); // 月份从0开始，需要+1
+      const day = String(today.getDate()).padStart(2, '0');
+
+      const formattedDate = `${year}-${month}-${day}`;
+
+      // 构建 URL
+      return `https://cdn.jsdelivr.net/gh/KMSWoo/Daily-Quote/${formattedDate}.png`;
+    },
   },
   created() {
     this.getFenxiangImg();
@@ -154,6 +169,7 @@ export default {
     this.dones = getCompletedTodos();
   },
   methods: {
+    /*
     async getFenxiangImg() {
       try {
         // 发送GET请求到API
@@ -177,7 +193,7 @@ export default {
         console.error('Error fetching data:', error);
         throw error;
       }
-    },
+    }, */
     changeTab(tab, event) {
       // console.log(tab.index);
       console.log(tab.name);
