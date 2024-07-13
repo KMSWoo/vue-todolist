@@ -558,16 +558,8 @@ video {
   position: fixed;
 }
 
-.bottom-10 {
-  bottom: 2.5rem;
-}
-
 .bottom-\[2vh\] {
   bottom: 2vh;
-}
-
-.bottom-0 {
-  bottom: 0px;
 }
 
 .mx-3 {
@@ -580,31 +572,6 @@ video {
   margin-right: auto;
 }
 
-.my-2 {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.my-\[1svh\] {
-  margin-top: 1svh;
-  margin-bottom: 1svh;
-}
-
-.my-\[2\.5svh\] {
-  margin-top: 2.5svh;
-  margin-bottom: 2.5svh;
-}
-
-.my-\[2\.5vh\] {
-  margin-top: 2.5vh;
-  margin-bottom: 2.5vh;
-}
-
-.my-\[2vh\] {
-  margin-top: 2vh;
-  margin-bottom: 2vh;
-}
-
 .ml-auto {
   margin-left: auto;
 }
@@ -613,84 +580,24 @@ video {
   display: flex;
 }
 
-.h-\[55svh\] {
-  height: 55svh;
-}
-
-.h-\[60svh\] {
-  height: 60svh;
-}
-
-.h-full {
-  height: 100%;
-}
-
 .h-\[10vh\] {
   height: 10vh;
-}
-
-.h-screen {
-  height: 100vh;
-}
-
-.h-\[5vh\] {
-  height: 5vh;
-}
-
-.h-\[8vh\] {
-  height: 8vh;
 }
 
 .h-\[6vh\] {
   height: 6vh;
 }
 
-.h-1\/2 {
-  height: 50%;
-}
-
-.h-2\/3 {
-  height: 66.666667%;
-}
-
-.max-h-\[6vh\] {
-  max-height: 6vh;
-}
-
-.max-h-\[70vh\] {
-  max-height: 70vh;
+.max-h-\[10vh\] {
+  max-height: 10vh;
 }
 
 .max-h-\[65vh\] {
   max-height: 65vh;
 }
 
-.max-h-\[10vh\] {
-  max-height: 10vh;
-}
-
 .min-h-screen {
   min-height: 100vh;
-}
-
-.min-h-\[10vh\] {
-  min-height: 10vh;
-}
-
-.min-h-\[15vh\] {
-  min-height: 15vh;
-}
-
-.min-h-\[20vh\] {
-  min-height: 20vh;
-}
-
-.min-h-\[80vh\] {
-  min-height: 80vh;
-}
-
-.min-h-\[75vh\] {
-  min-height: 75vh;
 }
 
 .w-4\/5 {
@@ -699,26 +606,6 @@ video {
 
 .w-full {
   width: 100%;
-}
-
-.w-screen {
-  width: 100vw;
-}
-
-.w-\[1\/2vw\] {
-  width: 1/2vw;
-}
-
-.w-1\/2 {
-  width: 50%;
-}
-
-.max-w-full {
-  max-width: 100%;
-}
-
-.flex-grow {
-  flex-grow: 1;
 }
 
 .grow {
@@ -731,10 +618,6 @@ video {
 
 .flex-col {
   flex-direction: column;
-}
-
-.items-end {
-  align-items: flex-end;
 }
 
 .items-center {
@@ -751,10 +634,6 @@ video {
 
 .self-end {
   align-self: flex-end;
-}
-
-.self-center {
-  align-self: center;
 }
 
 .overflow-auto {
@@ -852,11 +731,6 @@ video {
     position: static;
   }
 
-  .md\:my-\[2\.5svh\] {
-    margin-top: 2.5svh;
-    margin-bottom: 2.5svh;
-  }
-
   .md\:flex {
     display: flex;
   }
@@ -867,10 +741,6 @@ video {
 
   .md\:h-\[5vh\] {
     height: 5vh;
-  }
-
-  .md\:w-1\/2 {
-    width: 50%;
   }
 
   .md\:w-full {
@@ -896,10 +766,6 @@ video {
 }
 
 @media (min-width: 1024px) {
-  .lg\:mt-\[5svh\] {
-    margin-top: 5svh;
-  }
-
   .lg\:w-1\/2 {
     width: 50%;
   }

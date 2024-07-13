@@ -54,8 +54,8 @@
           :label="labels[0]"
         >
           <img
-            v-show="todos.length === 0"
-            :src="imgUrl"
+            v-show="todos.length === 0 && isShow"
+            :src="src"
             alt="Daily Quote"
             class="w-full rounded-xl max-h-[65vh]"
           />
@@ -145,6 +145,8 @@ export default {
       todos: [],
       dones: [],
       labels: ['进行中', '已完成'],
+      isShow: false,
+      src: '',
     };
   },
   computed: {
@@ -164,11 +166,26 @@ export default {
     },
   },
   created() {
-    this.getFenxiangImg();
+    this.loadImage();
     this.todos = getIncompleteTodos();
     this.dones = getCompletedTodos();
   },
   methods: {
+    loadImage() {
+      const img = new Image();
+      img.onload = () => {
+        this.src = this.imgUrl;
+        this.isShow = true;
+      };
+      img.onerror = () => {
+        this.src =
+          'https://cdn.jsdelivr.net/gh/KMSWoo/Daily-Quote/' +
+          'default' +
+          '.png';
+        this.isShow = true;
+      };
+      img.src = this.imgUrl;
+    },
     /*
     async getFenxiangImg() {
       try {
