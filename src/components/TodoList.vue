@@ -1,10 +1,13 @@
 <template>
   <div
     id="main"
-    class="min-h-screen flex flex-col w-4/5 lg:w-1/2 mx-auto py-[2vh]"
+    class="min-h-[90vh] flex flex-col w-4/5 lg:w-1/2 mx-auto py-[2vh] border-b-0"
   >
     <!-- 标题部分 -->
-    <div id="title" class="flex flex-row justify-center h-[10vh] items-center">
+    <div
+      id="title"
+      class="flex flex-row justify-center h-[10vh] items-center order-0 md:order-0"
+    >
       <p class="md:text-2xl text-lg font-mono self-start">Just</p>
       <h1
         class="lg:text-8xl text-5xl font-sans antialiased font-bold text-center text-gray-400/80 uppercase"
@@ -16,7 +19,7 @@
     <!-- 输入框部分 -->
     <div
       id="input"
-      class="md:h-[10vh] md:flex md:flex-row md:justify-center md:items-center md:static md:w-full fixed bottom-[2vh] w-4/5"
+      class="w-full items-center justify-center md:h-[10vh] md:flex md:flex-row order-2 md:order-1"
     >
       <div
         class="max-h-[10vh] flex flex-row w-full justify-center items-center"
@@ -39,7 +42,7 @@
       </div>
     </div>
     <!-- todo列表 -->
-    <div class="grow flex flex-col rounded-xl">
+    <div class="grow flex flex-col rounded-xl order-1 md:order-2">
       <el-tabs
         v-model="activeTab"
         type="border-card"
@@ -178,10 +181,11 @@ export default {
         this.isShow = true;
       };
       img.onerror = () => {
-        this.src =
-          'https://cdn.jsdelivr.net/gh/KMSWoo/Daily-Quote/' +
-          'default' +
-          '.png';
+        this.src = 'default.png';
+        // github上的都不稳定
+        // 'https://cdn.jsdelivr.net/gh/KMSWoo/Daily-Quote/' +
+        // 'default' +
+        // '.png';
         this.isShow = true;
       };
       img.src = this.imgUrl;
@@ -255,13 +259,22 @@ export default {
 </script>
 <style scoped>
 /* >>> 换成 /deep/也可以 */
-.el-tabs >>> .el-tabs__item {
-  border-radius: 0.75rem 0 0 0;
+/deep/.el-tabs__item {
+  /* border-radius: 0.75rem 0.75rem 0 0; */
+  border-bottom: none;
+  border-bottom-width: 0;
+  border-bottom-style: none;
 }
-.el-tabs >>> .el-tabs__header {
-  border-radius: 0.75rem 0.75rem 0 0;
+/deep/.el-tabs__header {
+  /* border-radius: 0.75rem 0.75rem 0 0; */
+  border-bottom: none;
+  border-bottom-width: 0;
+  border-bottom-style: none;
 }
-.el-tabs--top {
-  border-radius: 0.75rem;
+/deep/.el-tabs--top {
+  /* border-radius: 0.75rem 0.75rem 0 0; */
+  border-bottom: none;
+  border-bottom-width: 0;
+  border-bottom-style: none;
 }
 </style>
