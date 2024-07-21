@@ -165,7 +165,7 @@ export default {
       const formattedDate = `${year}-${month}-${day}`;
 
       // 构建 URL
-      return `https://cdn.jsdelivr.net/gh/KMSWoo/Daily-Quote/${formattedDate}.png`;
+      return `https://cdn.jsdelivr.net/gh/KMSWoo/Daily-Quote/image/${formattedDate}.png`;
     },
   },
   created() {
@@ -175,17 +175,11 @@ export default {
   },
   methods: {
     loadImage() {
+      this.src = 'default.png';
+      this.isShow = true;
       const img = new Image();
       img.onload = () => {
         this.src = this.imgUrl;
-        this.isShow = true;
-      };
-      img.onerror = () => {
-        this.src = 'default.png';
-        // github上的都不稳定
-        // 'https://cdn.jsdelivr.net/gh/KMSWoo/Daily-Quote/' +
-        // 'default' +
-        // '.png';
         this.isShow = true;
       };
       img.src = this.imgUrl;
