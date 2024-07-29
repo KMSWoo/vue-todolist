@@ -60,7 +60,8 @@
             v-show="todos.length === 0 && isShow"
             :src="src"
             alt="Daily Quote"
-            class="transition-all duration-300 ease-in-out w-full rounded-xl max-h-[65vh]"
+            class="transition-all duration-1000 ease-in-out w-full rounded-xl max-h-[65vh]"
+            :style="{ opacity: imageOpacity }"
           />
           <div
             v-for="todo in todos"
@@ -148,8 +149,9 @@ export default {
       todos: [],
       dones: [],
       labels: ['进行中', '已完成'],
-      isShow: false,
+      isShow: true,
       src: '',
+      imageOpacity: 0,
     };
   },
   computed: {
@@ -176,11 +178,18 @@ export default {
   methods: {
     loadImage() {
       this.src = 'default.png';
-      this.isShow = true;
+      this.$nextTick(() => {
+        this.imageOpacity = 1;
+      });
       const img = new Image();
       img.onload = () => {
-        this.src = this.imgUrl;
-        this.isShow = true;
+        this.imageOpacity = 0;
+        this.$nextTick(() => {
+          this.src = this.imgUrl;
+          this.$nextTick(() => {
+            this.imageOpacity = 1;
+          });
+        });
       };
       img.src = this.imgUrl;
     },
