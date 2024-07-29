@@ -1,7 +1,7 @@
 <template>
   <div
     id="main"
-    class="min-h-[90vh] flex flex-col w-4/5 lg:w-1/2 mx-auto py-[2vh] border-b-0"
+    class="transition-all duration-300 ease-in-out min-h-[90vh] flex flex-col w-4/5 lg:w-1/2 mx-auto py-[2vh] border-b-0"
   >
     <!-- 标题部分 -->
     <div
@@ -10,7 +10,7 @@
     >
       <p class="md:text-2xl text-lg font-mono self-start">Just</p>
       <h1
-        class="lg:text-8xl text-5xl font-sans antialiased font-bold text-center text-gray-400/80 uppercase"
+        class="transition-all duration-300 ease-in-out lg:text-8xl text-5xl font-sans antialiased font-bold text-center text-gray-400/80 uppercase"
       >
         {{ msg }}
       </h1>
@@ -60,7 +60,7 @@
             v-show="todos.length === 0 && isShow"
             :src="src"
             alt="Daily Quote"
-            class="w-full rounded-xl max-h-[65vh]"
+            class="transition-all duration-300 ease-in-out w-full rounded-xl max-h-[65vh]"
           />
           <div
             v-for="todo in todos"
