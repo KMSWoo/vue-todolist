@@ -1,7 +1,7 @@
 <template>
   <div
     id="main"
-    class="transition-all duration-300 ease-in-out min-h-[90vh] flex flex-col w-4/5 lg:w-1/2 mx-auto py-[2vh] border-b-0"
+    class="dark:bg-gray-800 text-black dark:text-white transition-all duration-300 ease-in-out min-h-[90vh] flex flex-col w-4/5 lg:w-1/2 mx-auto py-[2vh] border-b-0"
   >
     <!-- 标题部分 -->
     <div
